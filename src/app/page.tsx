@@ -175,22 +175,30 @@ export default function Home() {
 
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
             <div className="flex-1">
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">SAYAN DEY</h1>
+              <div className="flex items-start justify-between gap-6">
+                <div>
+                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">SAYAN DEY</h1>
+                </div>
+
+                {/* image on right of the name */}
+                <div className="relative h-32 w-32 overflow-hidden rounded-2xl ring-1 ring-zinc-200/70 dark:ring-zinc-800/70 md:h-44 md:w-44 lg:h-56 lg:w-56 flex-shrink-0">
+                  <img
+                    src="/image.JPG"
+                    alt="Sayan Dey"
+                    className="h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-700 dark:text-zinc-200">
+
                 Data Engineer • Databricks ETL (SQL + PySpark) • Azure data lake transformations • Lakehouse architecture
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-4">
-                <div className="relative h-24 w-24 overflow-hidden rounded-2xl ring-1 ring-zinc-200/70 dark:ring-zinc-800/70">
-                  <img
-                    src="/image.JPG"
-                    alt="Sayan Dey"
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-
                 <div className="flex flex-wrap gap-2">
+
                   <Badge>{email}</Badge>
                   <Badge>{phone}</Badge>
                   <a
