@@ -1,0 +1,39 @@
+SAYAN DEY
+sayan17081998dey@gmail.com | (+91) 9062414676 | LinkedIn | Kolkata, India
+
+PROFILE SUMMARY
+I am currently working at Tata Consultancy Services with close to 5 years of experience. I started my career as an Application Support Analyst where I worked extensively on incident management, service requests, SQL-based troubleshooting, SLA handling, and coordination with multiple teams using tools like JIRA, BMC Helix, and ServiceNow.
+During this time, I developed strong interest in data processing and analytics, which motivated me to transition into Data Engineering. For the last 2 years, I have been working on Databricks-based ETL solutions using SQL and Python, focusing on data transformation, data quality improvement, and pipeline optimization.
+I also completed the Databricks Data Engineer Associate certification and Azure AZ-900 certification to strengthen my cloud and data engineering knowledge.
+Currently, I am looking for opportunities where I can contribute more deeply in Data Engineering and work on scalable cloud-based data platforms.
+
+EDUCATION
+Maulana Abul Kalam Azad University of Technology — West Bengal, India
+Masters of Computer Application; CGPA: 9.43 — June 2019 - June 2021
+
+SKILLS SUMMARY
+• Cloud Platforms: Azure Data Lake Gen 2, Azure Blob Storage
+• Data Architecture: Medallion Architecture (Bronze, Silver, Gold), Schema Evolution, Schema Enforcement
+• Programming and Scripting: Python, PySpark, SQL
+• Data Engineering: Lakehouse Architecture, Data Warehousing.
+• Tools and Versioning: Git, JIRA
+
+WORK EXPERIENCE
+Data Engineer | Tata Consultancy Services, Kolkata — Dec 24 - Present
+• Developed and maintained ETL pipelines on Databricks using SQL and PySpark for processing business-critical datasets.
+• Performed data transformation, cleansing, and validation to improve data accuracy and consistency across reporting systems.
+• Worked with cross-functional teams to gather requirements and deliver scalable data solutions aligned with business needs.
+• Troubleshot pipeline failures and resolved data-related issues to ensure reliable data delivery.
+• Used GitHub for version control and collaborated within Agile sprint cycles using JIRA.
+
+Application Support Analyst | Tata Consultancy Services, Kolkata — August 21 - Dec 24
+• Resolved 95% of support tickets within SLA, enhancing team efficiency.
+• Delivered 99% uptime for critical applications, boosting user satisfaction.
+• Collaborated with cross-functional teams to implement system upgrades.
+• Developed documentation that reduced onboarding time by 40%.
+
+CERTIFICATES
+Databricks Certified Data Engineer Associate
+Microsoft Azure Fundamentals AZ-900
+IIT Kharagpur AI4ICPS certified Hands-on approach to AI for real world application
+
