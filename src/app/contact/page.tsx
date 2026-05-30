@@ -66,13 +66,22 @@ export default function ContactPage() {
               >
                 View Projects
               </a>
+
+              {/* Download only the PDF resume */}
               <a
-                href="/resume.txt"
+                href="/resume.pdf"
                 download
-                className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900"
+                className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
-                Download Resume
+                Download Resume (.PDF)
               </a>
+
+
+
+
+
+
+
             </div>
           </section>
         </div>

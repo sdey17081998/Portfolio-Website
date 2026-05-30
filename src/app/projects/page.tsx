@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 const email = "sayan17081998dey@gmail.com";
 
@@ -50,17 +51,24 @@ export default function ProjectsPage() {
         <header className="relative mb-8 overflow-hidden rounded-3xl border border-zinc-200/70 bg-white/60 p-8 backdrop-blur dark:border-zinc-800/70 dark:bg-black/20">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-200/40 via-transparent to-transparent dark:from-indigo-900/20" />
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl animate-fadeUp">Projects</h1>
-          <p className="mt-3 max-w-3xl text-base leading-relaxed text-zinc-700 dark:text-zinc-200 animate-fadeUp" style={{ animationDelay: "90ms" }}>
+          <p
+            className="mt-3 max-w-3xl text-base leading-relaxed text-zinc-700 dark:text-zinc-200 animate-fadeUp"
+            style={{ animationDelay: "90ms" }}
+          >
             A couple of highlights showcasing my Databricks / PySpark / SQL pipeline engineering work.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-2 animate-fadeUp" style={{ animationDelay: "160ms" }}>
-            <a
+          <div
+            className="mt-6 flex flex-wrap gap-2 animate-fadeUp"
+            style={{ animationDelay: "160ms" }}
+          >
+            <Link
               href="/"
               className="inline-flex items-center justify-center rounded-full border border-zinc-200 bg-white/70 px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-white dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-50"
             >
               Back to Home
-            </a>
+            </Link>
+
             <a
               href={`mailto:${email}`}
               className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900"
