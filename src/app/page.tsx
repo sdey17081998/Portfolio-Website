@@ -114,12 +114,13 @@ export default function Home() {
             </div>
 
             <div className="hidden items-center gap-2 sm:flex">
-              <span
+              <a
+                href="/"
                 className="rounded-full px-4 py-2 text-sm font-semibold transition hover:bg-white/80 dark:hover:bg-black/30"
                 aria-current="page"
               >
                 Home
-              </span>
+              </a>
               <a
                 href="/projects"
                 className="rounded-full border border-zinc-200 bg-white/60 px-4 py-2 text-sm font-semibold transition hover:bg-white/80 dark:border-zinc-800 dark:bg-black/20 dark:hover:bg-black/30"
