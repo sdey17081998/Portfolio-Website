@@ -182,7 +182,7 @@ export default function Home() {
                 </div>
 
                 {/* image on right of the name */}
-                <div className="relative h-32 w-32 overflow-hidden rounded-2xl ring-1 ring-zinc-200/70 dark:ring-zinc-800/70 md:h-44 md:w-44 lg:h-56 lg:w-56 flex-shrink-0">
+                <div className="relative h-32 w-32 overflow-hidden rounded-full ring-1 ring-zinc-200/70 dark:ring-zinc-800/70 md:h-44 md:w-44 lg:h-56 lg:w-56 flex-shrink-0">
                   <img
                     src="/image.JPG"
                     alt="Sayan Dey"
