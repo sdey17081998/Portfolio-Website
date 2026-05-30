@@ -109,13 +109,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-sm font-semibold leading-tight">SAYAN DEY</p>
-                <a
-                  href="/resume.pdf"
-                  download
-                  className="text-xs text-zinc-500 dark:text-zinc-400 hover:underline"
-                >
-                  Resume
-                </a>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">Data Engineering</p>
               </div>
             </div>
 
