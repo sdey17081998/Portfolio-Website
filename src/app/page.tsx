@@ -109,7 +109,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-sm font-semibold leading-tight">SAYAN DEY</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">Data Engineering</p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400">Data Engineer</p>
               </div>
             </div>
 
