@@ -6,6 +6,17 @@ const linkedinUrl = "https://www.linkedin.com/in/sayan-dey-328188181/";
 const email = "sayan17081998dey@gmail.com";
 const phone = "+91 9062414676";
 
+import AnimatedSection from "./AnimatedSection";
+
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-sm font-medium text-zinc-800 shadow-sm transition hover:bg-white dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-200">
+      {children}
+    </span>
+  );
+}
+
+
 function Section({
   title,
   children,
@@ -25,14 +36,6 @@ function Section({
       </h2>
       <div className="mt-4">{children}</div>
     </section>
-  );
-}
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-sm font-medium text-zinc-800 shadow-sm transition hover:bg-white dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-200">
-      {children}
-    </span>
   );
 }
 
@@ -192,9 +195,10 @@ export default function Home() {
                 </div>
               </div>
 
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-700 dark:text-zinc-200">
-
-                Data Engineer • Databricks ETL (SQL + PySpark) • Azure data lake transformations • Lakehouse architecture
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-700 dark:text-zinc-200">             
+                <span className="text-zinc-600 dark:text-zinc-200">
+                  Data Engineer • Databricks ETL (SQL + PySpark) • Azure data lake transformations • Lakehouse architecture
+                </span>
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-4">
@@ -232,6 +236,7 @@ export default function Home() {
             <Section title="Profile Summary" delayMs={0}>
               <p className="text-zinc-800 dark:text-zinc-200 leading-relaxed">
                 I am currently working at Tata Consultancy Services with close to 5 years of experience. I started my career as an Application Support Analyst where I worked extensively on incident management, service requests, SQL-based troubleshooting, SLA handling, and coordination with multiple teams using tools like JIRA, BMC Helix, and ServiceNow.
+
               </p>
               <p className="mt-3 text-zinc-800 dark:text-zinc-200 leading-relaxed">
                 During this time, I developed strong interest in data processing and analytics, which motivated me to transition into Data Engineering. For the last 2 years, I have been working on Databricks-based ETL solutions using SQL and Python, focusing on data transformation, data quality improvement, and pipeline optimization.
@@ -242,7 +247,9 @@ export default function Home() {
             </Section>
           </div>
 
-          <Section title="Skills" delayMs={80}>
+            <Section title="Skills" delayMs={80}>
+
+
             <div className="space-y-5">
               <div>
                 <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Cloud Platforms</p>
@@ -284,13 +291,15 @@ export default function Home() {
             </div>
           </Section>
 
-          <Section title="Experience" delayMs={160}>
+            <Section title="Experience" delayMs={160}>
+
             <div className="space-y-6">
               <div>
                 <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Data Engineer • Tata Consultancy Services, Kolkata</p>
                 <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">Dec 24 - Present</p>
                 <BulletList
                   items={[
+
                     "Developed and maintained ETL pipelines on Databricks using SQL and PySpark for processing business-critical datasets.",
                     "Performed data transformation, cleansing, and validation to improve data accuracy and consistency across reporting systems.",
                     "Worked with cross-functional teams to gather requirements and deliver scalable data solutions aligned with business needs.",
@@ -302,8 +311,9 @@ export default function Home() {
 
               <div>
                 <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Application Support Analyst • Tata Consultancy Services, Kolkata</p>
-                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">Aug 21 - Dec 24</p>
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">Aug 21 - Dec 24</p>
                 <BulletList
+
                   items={[
                     "Resolved 95% of support tickets within SLA, enhancing team efficiency.",
                     "Delivered 99% uptime for critical applications, boosting user satisfaction.",
@@ -315,14 +325,16 @@ export default function Home() {
             </div>
           </Section>
 
-          <Section title="Education" delayMs={240}>
+            <Section title="Education" delayMs={240}>
+
             <div className="space-y-2">
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Maulana Abul Kalam Azad University of Technology (West Bengal, India)</p>
               <p className="text-sm text-zinc-600 dark:text-zinc-300">Masters of Computer Application; CGPA: 9.43 — Jun 2019 - Jun 2021</p>
             </div>
           </Section>
 
-          <Section title="Certificates" delayMs={320}>
+            <Section title="Certificates" delayMs={320}>
+
             <ul className="mt-2 list-disc space-y-2 pl-5 text-zinc-800 dark:text-zinc-200">
               <li>Databricks Certified Data Engineer Associate</li>
               <li>Microsoft Azure Fundamentals AZ-900</li>
@@ -332,6 +344,7 @@ export default function Home() {
 
           <div className="lg:col-span-2">
             <Section title="Contact" delayMs={400}>
+
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div>
                   <p className="text-zinc-800 dark:text-zinc-200">Interested in hiring? I’m open to Data Engineering roles focused on scalable cloud data platforms.</p>
