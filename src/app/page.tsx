@@ -1,305 +1,254 @@
 "use client";
 
 import React from "react";
+import AnimatedSection from "./AnimatedSection";
+import NavBar from "./components/NavBar";
+import Reveal from "./components/Reveal";
+import Typewriter from "./components/Typewriter";
+import Counter from "./components/Counter";
+import Marquee from "./components/Marquee";
+import MagneticButton from "./components/MagneticButton";
 
 const linkedinUrl = "https://www.linkedin.com/in/sayan-dey-328188181/";
 const email = "sayan17081998dey@gmail.com";
 const phone = "+91 9062414676";
 
-import AnimatedSection from "./AnimatedSection";
-
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-sm font-medium text-zinc-800 shadow-sm transition hover:bg-white dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-200">
+    <span className="lift inline-flex items-center rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-sm font-medium text-zinc-800 shadow-sm hover:shadow-md dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-200">
       {children}
     </span>
   );
 }
 
-
-function Section({
-  title,
-  children,
-  delayMs = 0,
-}: {
-  title: string;
-  children: React.ReactNode;
-  delayMs?: number;
-}) {
-  return (
-    <section
-      className="animate-fadeUp rounded-2xl border border-zinc-200/70 bg-white/70 p-6 backdrop-blur transition hover:-translate-y-0.5 hover:shadow-lg dark:border-zinc-800/70 dark:bg-black/20"
-      style={{ animationDelay: `${delayMs}ms` }}
-    >
-      <h2 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-        {title}
-      </h2>
-      <div className="mt-4">{children}</div>
-    </section>
-  );
-}
-
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className="mt-2 list-disc space-y-2 pl-5 text-zinc-800 dark:text-zinc-200">
+    <ul className="mt-2 space-y-2 text-zinc-800 dark:text-zinc-200">
       {items.map((it, idx) => (
-        <li key={idx} className="leading-relaxed">
-          {it}
-        </li>
+        <Reveal
+          as="li"
+          key={idx}
+          direction="left"
+          delayMs={idx * 70}
+          className="flex gap-2 leading-relaxed"
+        >
+          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" />
+          <span>{it}</span>
+        </Reveal>
       ))}
     </ul>
   );
 }
 
+const skillsMarquee = [
+  "Python",
+  "PySpark",
+  "SQL",
+  "Databricks",
+  "Azure Data Lake Gen2",
+  "Azure Blob Storage",
+  "Medallion Architecture",
+  "Lakehouse",
+  "ETL Pipelines",
+  "Data Warehousing",
+  "Schema Evolution",
+  "Git",
+  "JIRA",
+];
+
 export default function Home() {
-  const [role, setRole] = React.useState("Data Engineer");
-  const [tech, setTech] = React.useState("Databricks");
-  const [location, setLocation] = React.useState("Kolkata");
-
-  const results = React.useMemo(() => {
-    const roleText = role.toLowerCase();
-    const techText = tech.toLowerCase();
-
-    const isDataEng = roleText.includes("data engineer") || roleText.includes("engineering");
-    const isSupport = roleText.includes("support");
-    const isDbx = techText.includes("databricks") || techText.includes("pyspark") || techText.includes("sql");
-
-    if (isSupport) {
-      return {
-        primaryRoute: "/contact",
-        headline: "Support-first match",
-        bullets: [
-          "Incident + SLA handling experience",
-          "SQL-based troubleshooting + RCA",
-          "Cross-team coordination (JIRA / ServiceNow / BMC Helix)",
-        ],
-      };
-    }
-
-    // Data Engineering
-    if (isDataEng && isDbx) {
-      return {
-        primaryRoute: "/projects",
-        headline: "Databricks / PySpark match",
-        bullets: [
-          "ETL pipelines on Databricks (SQL + PySpark)",
-          "Transformation, validation, and data quality improvements",
-          "Lakehouse-style design patterns",
-        ],
-      };
-    }
-
-    return {
-      primaryRoute: "/projects",
-      headline: "Best-fit projects",
-      bullets: [
-        "Pipeline engineering + transformation experience",
-        "Strong SQL/Python foundations",
-        "Cloud-ready mindset (Azure Data Lake)",
-      ],
-    };
-  }, [role, tech]);
-
   return (
-    <div className="min-h-dvh bg-gradient-to-b from-zinc-50 to-white font-sans text-zinc-900 dark:from-black dark:to-zinc-950 dark:text-zinc-50">
-      {/* Top Nav */}
-      <div className="sticky top-0 z-50">
-        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="mt-3 flex items-center justify-between rounded-2xl border border-zinc-200/70 bg-white/60 px-4 py-3 backdrop-blur dark:border-zinc-800/70 dark:bg-black/20">
-            <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 via-indigo-400/10 to-cyan-500/10 ring-1 ring-indigo-500/20">
-                <span className="text-sm font-bold">SD</span>
-              </div>
-              <div>
-                <p className="text-sm font-semibold leading-tight">SAYAN DEY</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">Data Engineer</p>
-              </div>
-            </div>
-
-            <div className="hidden items-center gap-2 sm:flex">
-              <a
-                href="/"
-                className="rounded-full px-4 py-2 text-sm font-semibold transition hover:bg-white/80 dark:hover:bg-black/30"
-                aria-current="page"
-              >
-                Home
-              </a>
-              <a
-                href="/projects"
-                className="rounded-full border border-zinc-200 bg-white/60 px-4 py-2 text-sm font-semibold transition hover:bg-white/80 dark:border-zinc-800 dark:bg-black/20 dark:hover:bg-black/30"
-              >
-                Projects
-              </a>
-              <a
-                href="/contact"
-                className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900"
-              >
-                Contact
-              </a>
-
-            </div>
-
-            <div className="flex items-center gap-2 sm:hidden">
-              <a
-                href="/projects"
-                className="rounded-full border border-zinc-200 bg-white/60 p-2 text-sm font-semibold transition hover:bg-white/80 dark:border-zinc-800 dark:bg-black/20 dark:hover:bg-black/30"
-                aria-label="Projects"
-              >
-                P
-              </a>
-              <a
-                href="/contact"
-                className="rounded-full bg-zinc-900 p-2 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900"
-                aria-label="Contact"
-              >
-                C
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="relative min-h-dvh font-sans text-zinc-900 dark:text-zinc-50">
+      <NavBar />
 
       <div className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Hero */}
-        <header className="relative overflow-hidden rounded-3xl border border-zinc-200/70 bg-white/60 p-6 backdrop-blur dark:border-zinc-800/70 dark:bg-black/20 sm:p-10">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent dark:from-indigo-900/30" />
+        <header className="card-sheen relative overflow-hidden rounded-3xl border border-zinc-200/70 bg-white/60 p-6 backdrop-blur dark:border-zinc-800/70 dark:bg-black/20 sm:p-10">
           <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-indigo-400/15 blur-2xl animate-floaty" />
           <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-cyan-400/15 blur-2xl animate-floaty" />
-
-          {/* subtle “coding” background lines */}
-          <div
-            className="pointer-events-none absolute inset-0 -z-10 opacity-[0.22] mix-blend-multiply dark:mix-blend-screen"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, rgba(99,102,241,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(34,211,238,0.35) 1px, transparent 1px)",
-              backgroundSize: "42px 42px",
-            }}
-          />
-
 
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
             <div className="flex-1">
               <div className="flex items-start justify-between gap-6">
                 <div>
-                  <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">SAYAN DEY</h1>
+                  <Reveal direction="left">
+                    <p className="mb-2 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                      <span className="animate-wave mr-1">👋</span> Hi, I&apos;m
+                    </p>
+                  </Reveal>
+                  <Reveal direction="left" delayMs={80}>
+                    <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+                      <span className="text-gradient-animated">SAYAN DEY</span>
+                    </h1>
+                  </Reveal>
+                  <Reveal direction="left" delayMs={160}>
+                    <p className="mt-2 text-lg font-semibold text-zinc-700 dark:text-zinc-200 sm:text-xl">
+                      <Typewriter
+                        words={[
+                          "Data Engineer",
+                          "Databricks ETL Developer",
+                          "PySpark + SQL",
+                          "Azure Data Lake",
+                          "Lakehouse Builder",
+                        ]}
+                      />
+                    </p>
+                  </Reveal>
                 </div>
 
-                {/* image on right of the name */}
-                <div className="relative h-32 w-32 overflow-hidden rounded-full ring-1 ring-zinc-200/70 dark:ring-zinc-800/70 md:h-44 md:w-44 lg:h-56 lg:w-56 flex-shrink-0">
-                  <img
-                    src="/image.JPG"
-                    alt="Sayan Dey"
-                    className="h-full w-full object-cover object-center"
-                    loading="lazy"
-                  />
-                </div>
+                <Reveal
+                  direction="zoom"
+                  delayMs={120}
+                  className="relative h-32 w-32 flex-shrink-0 md:h-44 md:w-44 lg:h-56 lg:w-56"
+                >
+                  <div className="animate-spin-slow absolute -inset-1 rounded-full bg-[conic-gradient(from_0deg,#6366f1,#22d3ee,#a855f7,#6366f1)] opacity-70 blur-[2px]" />
+                  <div className="relative h-full w-full overflow-hidden rounded-full ring-2 ring-white/60 dark:ring-black/40">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/image.JPG"
+                      alt="Sayan Dey"
+                      className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-110"
+                      loading="lazy"
+                    />
+                  </div>
+                </Reveal>
               </div>
 
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-700 dark:text-zinc-200">             
-                <span className="text-zinc-600 dark:text-zinc-200">
-                  Data Engineer • Databricks ETL (SQL + PySpark) • Azure data lake transformations • Lakehouse architecture
-                </span>
-              </p>
+              <Reveal direction="up" delayMs={220}>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-600 dark:text-zinc-200">
+                  Databricks ETL (SQL + PySpark) • Azure data lake
+                  transformations • Lakehouse architecture
+                </p>
+              </Reveal>
 
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <div className="flex flex-wrap gap-2">
-
+              <Reveal direction="up" delayMs={300}>
+                <div className="mt-6 flex flex-wrap items-center gap-2">
                   <Badge>{email}</Badge>
                   <Badge>{phone}</Badge>
                   <a
                     href={linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-sm font-medium text-zinc-800 shadow-sm transition hover:bg-white dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-200"
+                    className="lift inline-flex items-center rounded-full border border-zinc-200 bg-white/70 px-3 py-1 text-sm font-medium text-zinc-800 shadow-sm hover:shadow-md dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-200"
                   >
                     LinkedIn
                   </a>
-                  <a
+                  <MagneticButton
                     href="/resume.pdf"
                     download
-                    className="inline-flex items-center rounded-full bg-zinc-900 px-3 py-1 text-sm font-medium text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+                    className="rounded-full bg-zinc-900 px-4 py-1.5 text-sm font-semibold text-white shadow-md hover:shadow-indigo-500/30 dark:bg-zinc-50 dark:text-zinc-900"
                   >
-                    Resume
-                  </a>
-
+                    Download Resume
+                  </MagneticButton>
                 </div>
-              </div>
+              </Reveal>
             </div>
-
-
           </div>
         </header>
 
-        {/* Content (smaller but still present) */}
+        {/* Animated stats */}
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {[
+            { to: 5, suffix: "+", label: "Years Experience" },
+            { to: 2, suffix: "+", label: "Years in Data Eng" },
+            { to: 99, suffix: "%", label: "App Uptime" },
+            { to: 95, suffix: "%", label: "Tickets in SLA" },
+          ].map((s, idx) => (
+            <Reveal key={s.label} direction="zoom" delayMs={idx * 100}>
+              <div className="lift card-sheen rounded-2xl border border-zinc-200/70 bg-white/60 p-5 text-center backdrop-blur dark:border-zinc-800/70 dark:bg-black/20">
+                <p className="text-3xl font-bold text-gradient-animated">
+                  <Counter to={s.to} suffix={s.suffix} />
+                </p>
+                <p className="mt-1 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                  {s.label}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Skills marquee */}
+        <div className="mt-8 space-y-3 rounded-2xl border border-zinc-200/70 bg-white/50 p-4 backdrop-blur dark:border-zinc-800/70 dark:bg-black/20">
+          <Marquee items={skillsMarquee} />
+          <Marquee items={[...skillsMarquee].reverse()} reverse />
+        </div>
+
+        {/* Content */}
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           <div className="lg:col-span-2">
-            <Section title="Profile Summary" delayMs={0}>
-              <p className="text-zinc-800 dark:text-zinc-200 leading-relaxed">
-                I am currently working at Tata Consultancy Services with close to 5 years of experience. I started my career as an Application Support Analyst where I worked extensively on incident management, service requests, SQL-based troubleshooting, SLA handling, and coordination with multiple teams using tools like JIRA, BMC Helix, and ServiceNow.
-
+            <AnimatedSection title="Profile Summary" delayMs={0}>
+              <p className="leading-relaxed text-zinc-800 dark:text-zinc-200">
+                I am currently working at Tata Consultancy Services with close to
+                5 years of experience. I started my career as an Application
+                Support Analyst where I worked extensively on incident
+                management, service requests, SQL-based troubleshooting, SLA
+                handling, and coordination with multiple teams using tools like
+                JIRA, BMC Helix, and ServiceNow.
               </p>
-              <p className="mt-3 text-zinc-800 dark:text-zinc-200 leading-relaxed">
-                During this time, I developed strong interest in data processing and analytics, which motivated me to transition into Data Engineering. For the last 2 years, I have been working on Databricks-based ETL solutions using SQL and Python, focusing on data transformation, data quality improvement, and pipeline optimization.
+              <p className="mt-3 leading-relaxed text-zinc-800 dark:text-zinc-200">
+                During this time, I developed strong interest in data processing
+                and analytics, which motivated me to transition into Data
+                Engineering. For the last 2 years, I have been working on
+                Databricks-based ETL solutions using SQL and Python, focusing on
+                data transformation, data quality improvement, and pipeline
+                optimization.
               </p>
-              <p className="mt-3 text-zinc-800 dark:text-zinc-200 leading-relaxed">
-                I completed the Databricks Data Engineer Associate certification and Microsoft Azure AZ-900 to strengthen my cloud and data engineering knowledge.
+              <p className="mt-3 leading-relaxed text-zinc-800 dark:text-zinc-200">
+                I completed the Databricks Data Engineer Associate certification
+                and Microsoft Azure AZ-900 to strengthen my cloud and data
+                engineering knowledge.
               </p>
-            </Section>
+            </AnimatedSection>
           </div>
 
-            <Section title="Skills" delayMs={80}>
-
-
+          <AnimatedSection title="Skills" delayMs={80}>
             <div className="space-y-5">
-              <div>
-                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Cloud Platforms</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <Badge>Azure Data Lake Gen 2</Badge>
-                  <Badge>Azure Blob Storage</Badge>
-                </div>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Data Architecture</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <Badge>Medallion Architecture (Bronze / Silver / Gold)</Badge>
-                  <Badge>Schema Evolution</Badge>
-                  <Badge>Schema Enforcement</Badge>
-                </div>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Programming</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <Badge>Python</Badge>
-                  <Badge>PySpark</Badge>
-                  <Badge>SQL</Badge>
-                </div>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Data Engineering</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <Badge>Lakehouse Architecture</Badge>
-                  <Badge>Data Warehousing</Badge>
-                </div>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Tools</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <Badge>Git</Badge>
-                  <Badge>JIRA</Badge>
-                </div>
-              </div>
+              {[
+                {
+                  label: "Cloud Platforms",
+                  items: ["Azure Data Lake Gen 2", "Azure Blob Storage"],
+                },
+                {
+                  label: "Data Architecture",
+                  items: [
+                    "Medallion Architecture (Bronze / Silver / Gold)",
+                    "Schema Evolution",
+                    "Schema Enforcement",
+                  ],
+                },
+                { label: "Programming", items: ["Python", "PySpark", "SQL"] },
+                {
+                  label: "Data Engineering",
+                  items: ["Lakehouse Architecture", "Data Warehousing"],
+                },
+                { label: "Tools", items: ["Git", "JIRA"] },
+              ].map((group, gi) => (
+                <Reveal key={group.label} direction="up" delayMs={gi * 60}>
+                  <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
+                    {group.label}
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {group.items.map((it) => (
+                      <Badge key={it}>{it}</Badge>
+                    ))}
+                  </div>
+                </Reveal>
+              ))}
             </div>
-          </Section>
+          </AnimatedSection>
 
-            <Section title="Experience" delayMs={160}>
-
+          <AnimatedSection title="Experience" delayMs={160}>
             <div className="space-y-6">
-              <div>
-                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Data Engineer • Tata Consultancy Services, Kolkata</p>
-                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">Dec 24 - Present</p>
+              <div className="relative border-l border-zinc-200 pl-5 dark:border-zinc-700">
+                <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-indigo-500/20" />
+                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                  Data Engineer • Tata Consultancy Services, Kolkata
+                </p>
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+                  Dec 24 - Present
+                </p>
                 <BulletList
                   items={[
-
                     "Developed and maintained ETL pipelines on Databricks using SQL and PySpark for processing business-critical datasets.",
                     "Performed data transformation, cleansing, and validation to improve data accuracy and consistency across reporting systems.",
                     "Worked with cross-functional teams to gather requirements and deliver scalable data solutions aligned with business needs.",
@@ -309,11 +258,16 @@ export default function Home() {
                 />
               </div>
 
-              <div>
-                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Application Support Analyst • Tata Consultancy Services, Kolkata</p>
-                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">Aug 21 - Dec 24</p>
+              <div className="relative border-l border-zinc-200 pl-5 dark:border-zinc-700">
+                <span className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-cyan-500 ring-4 ring-cyan-500/20" />
+                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                  Application Support Analyst • Tata Consultancy Services,
+                  Kolkata
+                </p>
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+                  Aug 21 - Dec 24
+                </p>
                 <BulletList
-
                   items={[
                     "Resolved 95% of support tickets within SLA, enhancing team efficiency.",
                     "Delivered 99% uptime for critical applications, boosting user satisfaction.",
@@ -323,51 +277,60 @@ export default function Home() {
                 />
               </div>
             </div>
-          </Section>
+          </AnimatedSection>
 
-            <Section title="Education" delayMs={240}>
-
+          <AnimatedSection title="Education" delayMs={240}>
             <div className="space-y-2">
-              <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Maulana Abul Kalam Azad University of Technology (West Bengal, India)</p>
-              <p className="text-sm text-zinc-600 dark:text-zinc-300">Masters of Computer Application; CGPA: 9.43 — Jun 2019 - Jun 2021</p>
+              <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                Maulana Abul Kalam Azad University of Technology (West Bengal,
+                India)
+              </p>
+              <p className="text-sm text-zinc-600 dark:text-zinc-300">
+                Masters of Computer Application; CGPA: 9.43 — Jun 2019 - Jun 2021
+              </p>
             </div>
-          </Section>
+          </AnimatedSection>
 
-            <Section title="Certificates" delayMs={320}>
-
-            <ul className="mt-2 list-disc space-y-2 pl-5 text-zinc-800 dark:text-zinc-200">
-              <li>Databricks Certified Data Engineer Associate</li>
-              <li>Microsoft Azure Fundamentals AZ-900</li>
-              <li>IIT Kharagpur AI4ICPS — Hands-on approach to AI for real world application</li>
-            </ul>
-          </Section>
+          <AnimatedSection title="Certificates" delayMs={320}>
+            <BulletList
+              items={[
+                "Databricks Certified Data Engineer Associate",
+                "Microsoft Azure Fundamentals AZ-900",
+                "IIT Kharagpur AI4ICPS — Hands-on approach to AI for real world application",
+              ]}
+            />
+          </AnimatedSection>
 
           <div className="lg:col-span-2">
-            <Section title="Contact" delayMs={400}>
-
+            <AnimatedSection title="Contact" delayMs={400}>
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div>
-                  <p className="text-zinc-800 dark:text-zinc-200">Interested in hiring? I’m open to Data Engineering roles focused on scalable cloud data platforms.</p>
-                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">Fastest response via email.</p>
+                  <p className="text-zinc-800 dark:text-zinc-200">
+                    Interested in hiring? I&apos;m open to Data Engineering roles
+                    focused on scalable cloud data platforms.
+                  </p>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
+                    Fastest response via email.
+                  </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <a
+                  <MagneticButton
                     href={`mailto:${email}`}
-                    className="inline-flex items-center justify-center rounded-full border border-zinc-200 bg-white/70 px-5 py-3 text-sm font-semibold text-zinc-900 transition hover:bg-white dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-50"
+                    className="rounded-full border border-zinc-200 bg-white/70 px-5 py-3 text-sm font-semibold text-zinc-900 hover:bg-white dark:border-zinc-800 dark:bg-black/20 dark:text-zinc-50"
                   >
                     {email}
-                  </a>
-                  <a
+                  </MagneticButton>
+                  <MagneticButton
                     href={linkedinUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+                    className="rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white shadow-md hover:shadow-indigo-500/30 dark:bg-zinc-50 dark:text-zinc-900"
                   >
                     LinkedIn Profile
-                  </a>
+                  </MagneticButton>
                 </div>
               </div>
-            </Section>
+            </AnimatedSection>
           </div>
         </div>
 
@@ -378,4 +341,3 @@ export default function Home() {
     </div>
   );
 }
-
